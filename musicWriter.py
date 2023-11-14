@@ -56,7 +56,8 @@ for note in array_of_notes:
 track = 0
 channel = 0
 time = 0  # In beats
-duration = 1  # In beats
+def nanoseconds_to_beats(nanoseconds, bpm):
+    return (nanoseconds * bpm) / (60 * 10**9)
 tempo = 120  # In BPM
 volume = 100  # 0-127, as per the MIDI standard
 
@@ -65,7 +66,7 @@ MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created
 MyMIDI.addTempo(track, time, tempo)
 
 for i, pitch in enumerate(array_of_note_numbers):
-    MyMIDI.addNote(track, channel, pitch, time + i, duration, volume)
+    MyMIDI.addNote(track, channel, pitch, time + i, nanoseconds_to_beats("", tempo), volume)
 
 
 

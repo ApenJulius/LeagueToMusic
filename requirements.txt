@@ -1,0 +1,4 @@
+pynput
+midiutil
+mingus
+midi2audio

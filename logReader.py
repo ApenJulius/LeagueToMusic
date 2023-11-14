@@ -7,6 +7,7 @@ def findAllUniqueKeys(fileLines):
         if key not in uniqueKeys:
             uniqueKeys.append(key)
     print(uniqueKeys)
+    print(len(uniqueKeys), " unique keys found") 
     return uniqueKeys
 
 
@@ -47,7 +48,7 @@ def pairDownUpKeys(fileLines):
 
 
 if __name__ == __name__:
-    with open("logs/output_16_45_14_11.txt") as logFile:
+    with open("logs/output_17_13_14_11.txt") as logFile:
         logLines = logFile.readlines()
         findAllUniqueKeys(logLines)
         pairDownUpKeys(logLines)

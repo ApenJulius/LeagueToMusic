@@ -66,7 +66,7 @@ MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created
 MyMIDI.addTempo(track, time, tempo)
 
 for i, pitch in enumerate(array_of_note_numbers):
-    MyMIDI.addNote(track, channel, pitch, time + i, nanoseconds_to_beats("", tempo), volume)
+    MyMIDI.addNote(track, channel, pitch, nanoseconds_to_beats("", tempo), nanoseconds_to_beats("", tempo), volume)
 
 
 

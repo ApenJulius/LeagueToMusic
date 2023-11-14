@@ -48,7 +48,7 @@ def pairDownUpKeys(fileLines):
 
 
 if __name__ == __name__:
-    with open("logs/output_17_13_14_11.txt") as logFile:
+    with open("logs/output_17_59_14_11.txt") as logFile:
         logLines = logFile.readlines()
         findAllUniqueKeys(logLines)
-        pairDownUpKeys(logLines)
+        #pairDownUpKeys(logLines)

@@ -1,4 +1,4 @@
-
+from pprint import pprint
 
 def findAllUniqueKeys(fileLines):
     uniqueKeys = []
@@ -29,26 +29,25 @@ def countUpKeys(fileLines):
     print(count, " up keys counted")
     return count
 
-def removeHoldLog(fileLines):
-    newFileLines = []
+def pairDownUpKeys(fileLines):
+    pairedKeys = []
     for downLine in fileLines:
         downLineArray = downLine.split(" ")
-        if(downLineArray[0] != "Down"):
+        if downLineArray[0] != "Down":
             continue
         for upLine in fileLines:
             upLineArray = upLine.split(" ")
-            if upLineArray[0] == downLineArray[0] and upLineArray[1] == downLineArray[1]:
-                
+            if upLineArray[0] == "Up" and upLineArray[1] == downLineArray[1]:
+                pairedKeys.append((downLine, upLine))
                 break
-        if line.split(" ")[0] == "Up" and line.split(" ")[1] == "":
-            newFileLines.append(line)
+    pprint(pairedKeys)
+    return pairedKeys
 
-    print(newFileLines)
 
 
 
 if __name__ == __name__:
-    with open("logs/output_12_54_14_11.txt") as logFile:
+    with open("logs/output_16_45_14_11.txt") as logFile:
         logLines = logFile.readlines()
         findAllUniqueKeys(logLines)
-        removeHoldLog(logLines)
+        pairDownUpKeys(logLines)

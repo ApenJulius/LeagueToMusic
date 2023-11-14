@@ -5,6 +5,11 @@ formatted_time = time.strftime("%H_%M_%d_%m", time.localtime(current_time))
 
 file = open(f"logs/output_{formatted_time}.txt", "a")
 
+def get_time():
+    return time.perf_counter_ns()
+
+nanoTimerStart = get_time()
+
 def type_correct(key): # Handles changing character standard
     try: 
         return listener.canonical(key).value # If special char use the code IE <27> for Key.esc
@@ -12,13 +17,13 @@ def type_correct(key): # Handles changing character standard
         return listener.canonical(key) # If not make unmodified char
 
 def on_press(key):
-    file.write(f"Down {type_correct(key)} at {time.time()}\n")
+    file.write(f"Down {type_correct(key)} at {get_time() - nanoTimerStart}\n")
 
 def on_release(key): # Recieves as standard uncorrected key type
     if key == keyboard.Key.alt_gr:
         file.close() # Wont save unless closed
         return False # Stop listener
-    file.write(f"Up {type_correct(key)} at {time.time()}\n")
+    file.write(f"Up {type_correct(key)} at {get_time() - nanoTimerStart}\n")
 
 
 with keyboard.Listener(
